@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+<title>Project</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script src="papaparse.min.js"></script>
+<script>
+var text = "I told you so!";
+</script>
+</head>
+
+<body>
+
+      <div class="container">
+          
+            <a href="./createClass.html"> Back </a>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col" id="first_name">First</th>
+                    <th scope="col" id="last_name">Last</th>
+                    <th scope="col" id="grade">grade</th>
+                    <th scope="col" id="year">Last</th>
+                    <th scope="col" id="semester">Semester</th>
+                    <th scope="col" id="lap">Lap</th>
+
+                  </tr>
+                </thead>
+                <tbody id="body-id">
+                    <script>
+                        var csv_file = sessionStorage.getItem("csv_file");
+                        var file = JSON.parse(csv_file).data;
+                        debugger;
+                        console.log(csv_file);
+                        
+                        var table = document.getElementById("body-id");
+                        for (var i = 1, row; row = file.length; i++) {
+                            document.write("<tr>")
+                            document.write("<th>" + i + "</th>")
+                            document.write("<td>" + file[i][0] + "</td>")
+                            document.write("<td>" + file[i][1] + "</td>")
+                            document.write("<td>" + file[i][2] + "</td>")
+                            document.write("<td>" + file[i][3] + "</td>")
+                            document.write("<td>" + file[i][4] + "</td>")
+                           document.write("</tr>")
+                        }
+                        
+                              
+                         </script>
+                </tbody>
+              </table>
+              
+
+</div>
+            
+           
+
+
+
+
+
+             
+
+     
+       
+        
+      
+
+</body>
+
+</html>

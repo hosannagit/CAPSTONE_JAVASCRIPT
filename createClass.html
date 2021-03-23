@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Project</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+<script>
+var text = "I told you so!";
+</script>
+<script src="papaparse.min.js"></script>
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+</head>
+
+<body>
+
+      <div class="container">
+          
+            <a href="./index.html"> Home  </a> &nbsp;
+            <a href="./manageClass.html"> Back </a>
+
+      <div class="row mt-5">
+            <div class="col-3">
+                  <input type="file" id="csv_upload" accept=".csv">
+            </div>
+            <div class="col-9">
+                  <a class="btn btn-primary" href="./addManually.html" role="button">Skip this step</a>
+            </div>
+      </div>
+
+            <div class="row mt-5">
+
+            
+            <div class="col-2">
+                  <button type="button" class="btn btn-info">Edit Class</button>
+            </div>
+            <div class="col-10">
+                  <button type="button" class="btn btn-danger">Delete Class</button>
+            </div>
+       </div>
+</div>
+            
+           
+
+
+
+
+<script>
+
+
+// const inputElement = document.getElementById("input");
+// inputElement.addEventListener("change", handleFiles, false);
+// function handleFiles() {
+//   const fileList = this.files; /* now you can work with the file list */
+// }
+
+  
+
+
+      document.getElementById('csv_upload').onchange = function() {
+          // fire the upload here
+
+          file_path = this.files[0].path
+
+          readTextFile(file_path)
+
+      
+      //     Papa.parse(this.files[0].path, {
+	// complete: function(results) {
+	// 	console.log("Finished:", results.data);
+// 	// }
+// });
+
+      //     debugger;
+      //     console.log(this.files)
+          
+            // sessionStorage.setItem("csv_file", this.files);
+            // window.location.href = "./preview.html";
+
+      };
+
+      function readTextFile(file)
+      {
+      var rawFile = new XMLHttpRequest();
+      rawFile.open("GET", file, false);
+      rawFile.onreadystatechange = function ()
+      {
+            if(rawFile.readyState === 4)
+            {
+                  if(rawFile.status === 200 || rawFile.status == 0)
+                  {
+                  var allText = rawFile.responseText;
+                  data = Papa.parse(allText)
+                  sessionStorage.setItem("csv_file", JSON.stringify(data));
+                  window.location.href = "./preview.html";
+                  // alert(allText);
+                  }
+            }
+      }
+      rawFile.send(null);
+      }
+
+
+           </script>
+             
+
+     
+       
+        
+      
+
+</body>
+
+</html>
